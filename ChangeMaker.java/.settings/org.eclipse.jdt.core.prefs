@@ -1,6 +1,5 @@
 
 
-
 import javax.swing.JOptionPane;
 
 import javafx.application.Application;
@@ -16,7 +15,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class AuthenticationGUI extends Application {
+public class AuthenticatGUI extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
@@ -29,6 +28,8 @@ public class AuthenticationGUI extends Application {
 		primaryStage.setTitle("Authentication");
 		TextField usernameTxtFld = new TextField();
 		PasswordField passwordTxtFld = new PasswordField();
+		TextField UsernameTxt2 = new TextField();
+		PasswordField PasswordTxt2 = new PasswordField();
 
 		Label UserLbl = new Label("Username");
 		Label PassLbl = new Label("Password");
@@ -52,25 +53,51 @@ public class AuthenticationGUI extends Application {
 					System.out.print(inputPass);
 					if (inputUser.equals(Username) && (inputPass.equals(Password))) {
 						JOptionPane.showMessageDialog(null, "welcome" + inputUser);
-						System.out.print("hello");
+						public void start(Stage primaryStages) {
+						submit2.setOnAction(new EventHandler<ActionEvent>() {
+							@Override
+							public void handle(ActionEvent arg1) {
+							String inputUser2 = "";
+							String inputPass2 = "";
+							String Username2 = "Tuan";
+							String Password2 = "Magik";
+							
+							for (int i = 0;  i < 3; i++) {
+								inputUser = usernameTxtFld.getText();
+								inputPass = passwordTxtFld.getText();
+								if (inputUser.equals(Username) && (inputPass.equals(Password))) {
+									JOptionPane.showMessageDialog(null, "Welcome" + inputUser);
+									i = 12;
+								} else {
+
+								}
+							}
+							
+						});
+						
+						GridPane grid = new GridPane();
+						grid.setAlignment(Pos.CENTER);
+						grid.setVgap(10);
+						;
+
+						grid.add(UserLbl, 0, 0);
+						grid.add(PassLbl, 0, 1);
+						grid.add(UsernameTxt2, 1, 0);
+						grid.add(PasswordTxt2, 1, 1);
+						grid.add(submit2, 1, 2);
+						Scene scenes = new Scene(grid, 500, 500);
+						primaryStage.setScene(scenes);
+						primaryStage.show();
+						}
+						}
 						break;
-
-					} else {
-
+					}else {
+						System.out.println("nya");
 					}
 
 				} while (!inputUser.equals(Username) && (!inputPass.equals(Password)));
 				
-				for (int i = 0;  i < 3; i++) {
-					inputUser = usernameTxtFld.getText();
-					inputPass = passwordTxtFld.getText();
-					if (inputUser.equals(Username) && (inputPass.equals(Password))) {
-						JOptionPane.showMessageDialog(null, "Welcome" + inputUser);
-						i = 12;
-					} else {
-
-					}
-				}
+				
 
 			}
 
@@ -89,5 +116,6 @@ public class AuthenticationGUI extends Application {
 		Scene scene = new Scene(grid2, 500, 500);
 		primaryStage.setScene(scene);
 		primaryStage.show();
-	}
+		
+}
 }
